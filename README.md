@@ -34,9 +34,13 @@ A live preview at the top updates as you change anything.
 
 ## Known limitations
 
-- If the volume is changed with the hardware keys, the widget's display catches
-  up on the next widget tap, when the app is opened, or within 30 minutes. The
-  buttons always act on the real current volume.
+- Volume changes made outside the widget (hardware keys, the system volume
+  panel) are picked up within about a second, without a permanently running
+  service: instantly while the app's process is alive, otherwise through a
+  background job that Android runs when the saved volume setting changes.
+  Aggressive battery savers may delay that job; the widget then catches up on
+  the next tap or within 30 minutes. The buttons always act on the real current
+  volume.
 - Ring and notification changes are ignored while Do Not Disturb is on.
 - The widget cannot be drawn taller than its launcher row. The height cap only
   applies on Android 12+; on Android 10–11 the widget fills its row.
@@ -85,6 +89,7 @@ build.bat                                          Builds the debug APK with too
 src/main/AndroidManifest.xml
 src/main/java/com/lm/volumewidget/
     VolumeWidget.java    Widget provider: tap handling and drawing
+    VolumeWatcher.java   Redraws the widget when the volume changes elsewhere
     MainActivity.java    Settings screen with live preview
 src/main/res/
     layout/widget.xml    Widget layout

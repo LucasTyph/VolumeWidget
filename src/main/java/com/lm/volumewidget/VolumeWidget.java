@@ -88,6 +88,11 @@ public class VolumeWidget extends AppWidgetProvider {
     }
 
     @Override
+    public void onDisabled(Context c) {
+        VolumeWatcher.watch(c, false);
+    }
+
+    @Override
     public void onAppWidgetOptionsChanged(Context c, AppWidgetManager m, int id, Bundle o) {
         updateAll(c);
     }
@@ -134,7 +139,9 @@ public class VolumeWidget extends AppWidgetProvider {
 
     static void updateAll(Context c) {
         AppWidgetManager m = AppWidgetManager.getInstance(c);
-        for (int id : m.getAppWidgetIds(new ComponentName(c, VolumeWidget.class))) {
+        int[] ids = m.getAppWidgetIds(new ComponentName(c, VolumeWidget.class));
+        VolumeWatcher.watch(c, ids.length > 0);
+        for (int id : ids) {
             Bundle o = m.getAppWidgetOptions(id);
             int w = o.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH);
             int h = o.getInt(AppWidgetManager.OPTION_APPWIDGET_MAX_HEIGHT);

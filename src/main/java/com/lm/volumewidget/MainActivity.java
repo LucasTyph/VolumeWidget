@@ -124,6 +124,10 @@ public class MainActivity extends Activity {
     /** Saves are already applied; redraw the home screen widgets and the preview. */
     void changed() {
         VolumeWidget.updateAll(this);
+        showPreview();
+    }
+
+    void showPreview() {
         int wDp = Math.round(getResources().getDisplayMetrics().widthPixels / d) - 60;
         int hDp = p.getInt("height", VolumeWidget.DEF_H);
         preview.removeAllViews();
@@ -291,6 +295,13 @@ public class MainActivity extends Activity {
     protected void onResume() {
         super.onResume();
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        VolumeWatcher.onChange = this::showPreview;
         changed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        VolumeWatcher.onChange = null;
     }
 }
