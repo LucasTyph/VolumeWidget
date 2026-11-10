@@ -1,0 +1,16 @@
+# Local build tools (JDK, Gradle, Android SDK) - see README to recreate
+/tools/
+
+# Build output and caches
+/build/
+/.gradle/
+local.properties
+*.apk
+
+# Editor / OS
+.idea/
+*.iml
+.vscode/
+.claude/
+Thumbs.db
+.DS_Store

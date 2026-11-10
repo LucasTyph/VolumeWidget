@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="2dp"
+                android:textSize="13sp" />
+
+            <TextView android:id="@+id/minus" style="@style/Btn" android:text="−" />
+
+            <ImageView
+                android:id="@+id/bar"
+                android:layout_width="0dp"
+                android:layout_height="8dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/pct"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:minWidth="38dp"
+                android:paddingLeft="4dp"
+                android:textSize="14sp" />
+
+            <TextView android:id="@+id/plus" style="@style/Btn" android:text="+" />
+
+            <TextView
+                android:id="@+id/preset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="28dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/chip"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:minWidth="44dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
